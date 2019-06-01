@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.8)  # 3.8 gives us built-in CUDA support
 
 project(dirt LANGUAGES CXX CUDA)
 
+set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
 
 # Search for EGL; nvidia drivers ship the library but not headers, so we redistribute those
@@ -38,6 +39,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -ffast-math")
 
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_30 --expt-relaxed-constexpr")
 
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
+add_definitions(-DNDEBUG)
 add_library(
     rasterise SHARED
     rasterise_egl.cpp rasterise_egl.cu
