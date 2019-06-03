@@ -50,7 +50,7 @@ add_library(
 )
 
 target_compile_features(rasterise PUBLIC cxx_std_11)
-target_link_libraries(rasterise ${EGL_LIBRARIES} ${OPENGL_LIBRARIES} ${Tensorflow_LIBRARY})
+target_link_libraries(rasterise ${EGL_LIBRARIES} ${OPENGL_LIBRARIES} ${Tensorflow_LIBRARY} OpenGL)
 
 # Put the compiled library in the python package folder, rather than whatever build folder is being used
 set_target_properties(
